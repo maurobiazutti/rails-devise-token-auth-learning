@@ -1,0 +1,19 @@
+• Criar um projeto Ruby on Rails (RoR) servindo como API
+• Adicionar autenticação pela gem devise_token_auth
+• Criar conta
+• Recuperar senha
+• Confirmar conta
+• Login / Logout
+• Alterar senha / alterar dados
+• Excluir conta
+• CRUD de Articles
+
+
+1° Criar projeto
+2° Configurar / Criar banco de dados
+3° Criar scaffolde article
+4° add gem 'devise_tokem_auth', gem 'letter_opener' e gem "active_model_serializers"
+5° Configurar gem letter_opener
+6° Configurar gem "active_model_serializers"
+7° Configurar gem 'devise_tokem_auth' 
+
