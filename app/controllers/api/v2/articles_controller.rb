@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Api::V2::ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show update destroy ]
 
   # GET /articles
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      render json: @article, status: :created, location: @article
+      render json: @article, status: :created, location: api_article_url(@article)
     else
       render json: @article.errors, status: :unprocessable_entity
     end
