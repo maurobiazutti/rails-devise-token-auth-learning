@@ -44,6 +44,11 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  
+  gem "letter_opener", "~> 1.10"
 end
+
+gem "devise_token_auth", "~> 1.2"
+gem "active_model_serializers", "~> 0.10.15"
 
 
