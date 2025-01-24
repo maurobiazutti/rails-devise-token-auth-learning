@@ -3,13 +3,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable, :omniauthable
-  #  :jwt_authenticatable,
   devise :database_authenticatable,
+        #  :jwt_authenticatable,
+         :confirmable,
          :registerable,
          :recoverable,
          :rememberable,
-         :validatable,
-         :confirmable,
-         :trackable
+         :trackable,
+         :validatable
   include DeviseTokenAuth::Concerns::User
 end

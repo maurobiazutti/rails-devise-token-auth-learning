@@ -20,6 +20,13 @@ Bundler.require(*Rails.groups)
 
 module BlogApi
   class Application < Rails::Application
+    
+    # configuração para desabilitar sessão
+    config.session_store :disabled
+    # configuração para desabilitar cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+   
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
@@ -40,5 +47,6 @@ module BlogApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
   end
 end

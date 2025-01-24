@@ -57,7 +57,7 @@ DeviseTokenAuth.setup do |config|
   # By default, only Bearer Token authentication is implemented out of the box.
   # If, however, you wish to integrate with legacy Devise authentication, you can
   # do so by enabling this flag. NOTE: This feature is highly experimental!
-  # config.enable_standard_devise_support = false
+  config.enable_standard_devise_support = false
 
   # By default DeviseTokenAuth will not send confirmation email, even when including
   # devise confirmable module. If you want to use devise confirmable module and
@@ -69,12 +69,12 @@ DeviseTokenAuth.setup do |config|
   # By default this value is expected to be sent by the client so that the API knows where 
   # to redirect users after successful email confirmation. If this param is set, the API 
   # will redirect to this value when no value is provided by the client.
-  config.default_confirm_success_url =  "http://localhost:3000/login"
+  config.default_confirm_success_url =  "http://localhost:3000/api/articles"
 
   # By default this value is expected to be sent by the client so that the API knows where 
   # to redirect users after successful password resets. If this param is set, the API 
   # will redirect to this value when no value is provided by the client.
-  config.default_reset_password_url = "http://localhost:3000/reset-password"
+  config.default_password_reset_url = "http://localhost:3000/api/articles"
 
   # By default, old tokens are not invalidated when password is changed. Enable this option 
   # if you want to make passwords updates to logout other devices.
