@@ -4,10 +4,12 @@ API com Rails 8 e Devise Token Auth, explorando implementação de autenticaçã
 
 ## Tecnologias Utilizadas
 
-- Ruby version - 3.2.0
-- Rails version - 8.0.1
-- PostgreSQL version - 1.1
-- Devise Token Auth - 1.2
+| Tecnologias | Versão | 
+|----------|----------|
+| Ruby | 3.2.0 | 
+| Rails | 8.0.1 | 
+| PostgreSQL | 1.1 |
+| Devise Token Auth | 1.2 | 
 
 ## Instalação
 
