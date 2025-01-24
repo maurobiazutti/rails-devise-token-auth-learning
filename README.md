@@ -1,24 +1,44 @@
-# README
+# Blog API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API com Rails 8 e Devise Token Auth, explorando implementação de autenticação para aplicação Web.
 
-Things you may want to cover:
+## Tecnologias Utilizadas
 
-* Ruby version
+- Ruby version - 3.2.0
+- Rails version - 8.0.1
+- PostgreSQL version - 1.1
+- Devise Token Auth - 1.2
 
-* System dependencies
+## Instalação
 
-* Configuration
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/maurobiazutti/rails-devise-token-auth-learning
+   ```
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd blog_api
+   ```
+3. Instale as dependências:
+   ```bash
+   bundle install
+   ```
+4. Configure o banco de dados:
+   ```bash
+   rails db:create
+   rails db:migrate
+   ```
 
-* Database creation
+## Uso
 
-* Database initialization
+Para executar a aplicação, use o seguinte comando:
 
-* How to run the test suite
+```bash
+bin/rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+A aplicação estará disponível em `http://localhost:3000`.
 
-* Deployment instructions
+## Contribuição
 
-* ...
+Sinta-se à vontade para abrir issues ou pull requests.
