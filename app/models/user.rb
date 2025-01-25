@@ -11,5 +11,8 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable
+
   include DeviseTokenAuth::Concerns::User
+
+  has_many :articles, dependent: :destroy
 end
