@@ -6,7 +6,7 @@ class Api::V2::ArticlesController < ApplicationController
   def index
     @articles = current_api_user.articles.all
 
-    render json: @articles
+    render json: { articles: @articles }, status: :ok
   end
 
   # GET /articles/1
