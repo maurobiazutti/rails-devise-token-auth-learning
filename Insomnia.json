@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2025-01-30T05:05:35.128Z",
+  "__export_date": "2025-01-30T23:53:43.052Z",
   "__export_source": "insomnia.desktop.app:v2023.4.0",
   "resources": [
     {
@@ -72,7 +72,7 @@
     {
       "_id": "req_71028b3924d14f18aa8b249948da7c3f",
       "parentId": "fld_533633ac705c4acbb5c8131c8c7da018",
-      "modified": 1737729357981,
+      "modified": 1738276742706,
       "created": 1737729204270,
       "url": "{{ _.baseUrl }}/auth",
       "name": "Update",
@@ -80,14 +80,14 @@
       "method": "PUT",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"current_password\": \"{{ _.password }}\",\n\t\"password\": \"{{ _.password }}\",\n\t\"password_confirmation\": \"{{ _.password }}\"\n}"
+        "text": "{\n\t\"current_password\": \"{% dotenv _.envFilePath, 'password' %}\",\n\t\"password\": \"{% dotenv _.envFilePath, 'password' %}\",\n\t\"password_confirmation\": \"{% dotenv _.envFilePath, 'password' %}\"\n}"
       },
       "parameters": [],
       "headers": [
         {
           "id": "pair_216a986257084e8eb59dcae4d9588887",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
@@ -99,12 +99,13 @@
         {
           "id": "pair_6e155d88a7124621bffaebe420874f11",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
           "name": "Content-Type",
-          "value": "application/json"
+          "value": "application/json",
+          "id": "pair_3595dbb2975144bc8358ba1d9240bce0"
         }
       ],
       "authentication": {},
@@ -164,7 +165,7 @@
     {
       "_id": "req_7f9ab55ab2524ef9922da4c272529763",
       "parentId": "fld_533633ac705c4acbb5c8131c8c7da018",
-      "modified": 1737747598057,
+      "modified": 1738276823901,
       "created": 1737747324516,
       "url": "{{ _.baseUrl }}/auth/password",
       "name": "Reset",
@@ -179,7 +180,7 @@
         {
           "id": "pair_216a986257084e8eb59dcae4d9588887",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
@@ -191,7 +192,7 @@
         {
           "id": "pair_6e155d88a7124621bffaebe420874f11",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
@@ -220,7 +221,7 @@
     {
       "_id": "req_0f9c5c35368641569326f3fc90b4d66b",
       "parentId": "fld_a847f7246c2943938e611416dcc8d014",
-      "modified": 1737688149746,
+      "modified": 1738279213439,
       "created": 1737674990217,
       "url": "{{ _.baseUrl }}/auth/validate_token",
       "name": "Validade token",
@@ -232,20 +233,20 @@
         {
           "id": "pair_5b26e2bf18764abcb7ee70668b14bff0",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": "",
           "disabled": false
         },
         {
           "id": "pair_e285d3c619a6424ca30bd4b5972344b8",
           "name": "uid",
-          "value": "{{ _.email }}",
+          "value": "{{ _.email1 }}",
           "description": ""
         },
         {
           "id": "pair_fe8487b181b94c2e93eef6a1f92d6c16",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         }
       ],
@@ -275,7 +276,7 @@
     {
       "_id": "req_0a027b27e046484280aef4efe52407fa",
       "parentId": "fld_a16a755baa7648a0acc51a2a37cc2766",
-      "modified": 1737688739644,
+      "modified": 1738279135663,
       "created": 1737688557161,
       "url": "{{ _.baseUrl }}/auth/sign_out",
       "name": "Sign out",
@@ -287,19 +288,19 @@
         {
           "id": "pair_6a9b242051304fce9be931f6d8e9213c",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
           "id": "pair_e3a7c6238b0b44a4864f98caf7c3a51f",
           "name": "uid",
-          "value": "{{ _.email }}",
+          "value": "{{ _.email2 }}",
           "description": ""
         },
         {
           "id": "pair_645be2edaad6481887dda6f8a577f287",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         }
       ],
@@ -329,7 +330,7 @@
     {
       "_id": "req_9dd82312bc84482899a1f39ddcdce8a9",
       "parentId": "fld_a16a755baa7648a0acc51a2a37cc2766",
-      "modified": 1737683590109,
+      "modified": 1738279155922,
       "created": 1737673250255,
       "url": "{{ _.baseUrl }}/auth/sign_in",
       "name": "Sign in",
@@ -337,7 +338,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"{{ _.email }}\",\n\t\"password\": \"{{ _.password }}\"\n}\n\n\n\n"
+        "text": "{\n\t\"email\": \"{{ _.email1 }}\",\n\t\"password\": \"{% dotenv _.envFilePath, 'password' %}\"\n}\n\n\n\n"
       },
       "parameters": [],
       "headers": [
@@ -360,7 +361,7 @@
     {
       "_id": "req_50c38ef2a06e440796eae4ceaf6e3d6e",
       "parentId": "fld_5db6c710fee74e24b7315e27c111bb8e",
-      "modified": 1737662693387,
+      "modified": 1738278790557,
       "created": 1737662153001,
       "url": "{{ _.baseUrl }}/auth",
       "name": "Create",
@@ -368,7 +369,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"{{ _.email }}\",\n\t\"password\": \"{{ _.password }}\",\n\t\"password_confirmation\": \"{{ _.password }}\"\n}"
+        "text": "{\n\t\"email\": \"mauro1@email.com\",\n\t\"password\": \"123456\",\n\t\"password_confirmation\": \"123456\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -403,7 +404,7 @@
     {
       "_id": "req_3e325b4f30b9429b8b47f351c49230c1",
       "parentId": "fld_5db6c710fee74e24b7315e27c111bb8e",
-      "modified": 1737692786995,
+      "modified": 1738276843940,
       "created": 1737692678357,
       "url": "{{ _.baseUrl }}/auth",
       "name": "Delete",
@@ -415,7 +416,7 @@
         {
           "id": "pair_216a986257084e8eb59dcae4d9588887",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
@@ -427,7 +428,7 @@
         {
           "id": "pair_6e155d88a7124621bffaebe420874f11",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         }
       ],
@@ -445,7 +446,7 @@
     {
       "_id": "req_bc06d32444b747cd89d7d1a2260c128d",
       "parentId": "fld_5db6c710fee74e24b7315e27c111bb8e",
-      "modified": 1737729034887,
+      "modified": 1738276848522,
       "created": 1737692821887,
       "url": "{{ _.baseUrl }}/auth",
       "name": "Update",
@@ -460,7 +461,7 @@
         {
           "id": "pair_216a986257084e8eb59dcae4d9588887",
           "name": "access_token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
@@ -472,12 +473,13 @@
         {
           "id": "pair_6e155d88a7124621bffaebe420874f11",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
           "name": "Content-Type",
-          "value": "application/json"
+          "value": "application/json",
+          "id": "pair_b2c3741aa34e49b080bfe7b97d83d6d9"
         }
       ],
       "authentication": {},
@@ -494,7 +496,7 @@
     {
       "_id": "req_0efac056599a45ea8cf8ddd03300cf2c",
       "parentId": "fld_3b758287c600477d9de69541bd6c989e",
-      "modified": 1738212886336,
+      "modified": 1738279328706,
       "created": 1737595144224,
       "url": "{{ _.baseUrl }}/articles",
       "name": "Create",
@@ -502,7 +504,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"title\": \"Devise 5\",\n\t\"body\": \"Auth\"\n}"
+        "text": "{\n\t\"title\": \"mauro1@email.com, 5\",\n\t\"body\": \"Auth123456\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -514,19 +516,19 @@
         {
           "id": "pair_dc8c37f1f4ba4a508fd90f569d701b62",
           "name": "access-token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
           "id": "pair_37d6a742a39d41a8bc502db7d9e62e24",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
           "id": "pair_0e294f0a24714768a2bbb7c3ec03ca6c",
           "name": "uid",
-          "value": "{{ _.email }}",
+          "value": "{{ _.email1 }}",
           "description": ""
         }
       ],
@@ -586,7 +588,7 @@
     {
       "_id": "req_c3fdcae1f7274131a9ca0ef2823d14b6",
       "parentId": "fld_3b758287c600477d9de69541bd6c989e",
-      "modified": 1737751200622,
+      "modified": 1738279224950,
       "created": 1737594713299,
       "url": "{{ _.baseUrl }}/articles",
       "name": "Read v2",
@@ -598,19 +600,19 @@
         {
           "id": "pair_86b7514fc7d54840acab51e0204f1a25",
           "name": "access-token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
           "id": "pair_15a1436aa1a149ee89c712c58fec71da",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
           "id": "pair_44e7acd770804997bff9640acd6e64d6",
           "name": "uid",
-          "value": "{{ _.email }}",
+          "value": "{{ _.email1 }}",
           "description": ""
         }
       ],
@@ -628,7 +630,7 @@
     {
       "_id": "req_c9f29f2aaeb14029beeb4a6526d8dfa2",
       "parentId": "fld_3b758287c600477d9de69541bd6c989e",
-      "modified": 1737837670770,
+      "modified": 1738276863647,
       "created": 1737595457800,
       "url": "{{ _.baseUrl }}/articles/5",
       "name": "Update",
@@ -648,13 +650,13 @@
         {
           "id": "pair_ffa2a7b911d9441a88b8513a8b0cc899",
           "name": "access-token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
           "id": "pair_8c5934d3c171438c8f584024dd1b13db",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
@@ -678,9 +680,9 @@
     {
       "_id": "req_48d1a1790916416a9bcfab4d4f79e0f7",
       "parentId": "fld_3b758287c600477d9de69541bd6c989e",
-      "modified": 1737837682562,
+      "modified": 1738277171934,
       "created": 1737595536721,
-      "url": "{{ _.baseUrl }}/articles/5",
+      "url": "{{ _.baseUrl }}/articles/4",
       "name": "Delete",
       "description": "",
       "method": "DELETE",
@@ -690,13 +692,13 @@
         {
           "id": "pair_2930111fe3c84825bfcb5823e2ab9930",
           "name": "access-token",
-          "value": "{{ _['access-token'] }}",
+          "value": "{% dotenv _.envFilePath, 'access-token' %}",
           "description": ""
         },
         {
           "id": "pair_f5c845ddab54474897dadeb8299b275a",
           "name": "client",
-          "value": "{{ _.client }}",
+          "value": "{% dotenv _.envFilePath, 'client' %}",
           "description": ""
         },
         {
@@ -742,23 +744,21 @@
     {
       "_id": "env_cb2564bfe4054f7ea1f5f437c097bbd4",
       "parentId": "env_b854711ecb93244e052838dea5c61b4ce637322c",
-      "modified": 1738192564970,
+      "modified": 1738278949834,
       "created": 1737594145373,
       "name": "dev",
       "data": {
         "baseUrl": "http://localhost:3000/api",
-        "email": "mauro@email.com",
-        "password": "123456",
-        "access-token": "pZtdg3pDIa-Y3_WoQOvndg",
-        "client": "sJozgIcQA1Z3oKdDe4LRiA"
+        "email1": "mauro1@email.com",
+        "email2": "mauro2@email.com",
+        "envFilePath": "/home/mauro/Área de Trabalho/API_Autentificacao/blog_api/.env.development"
       },
       "dataPropertyOrder": {
         "&": [
           "baseUrl",
-          "email",
-          "password",
-          "access-token",
-          "client"
+          "email1",
+          "email2",
+          "envFilePath"
         ]
       },
       "color": "#8186fd",
