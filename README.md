@@ -41,6 +41,11 @@ bin/rails server
 
 A aplicação estará disponível em `http://localhost:3000`.
 
+## Testes
+
+![Cobertura de Testes](docs/img_teste_coverage.png)
+
+
 ## Contribuição
 
 Sinta-se à vontade para abrir issues ou pull requests.

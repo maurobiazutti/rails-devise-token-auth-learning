@@ -42,7 +42,7 @@ class Api::V1::ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = current_api_user.articles.find(params.expect[:id])
+      @article = current_api_user.articles.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
