@@ -10,6 +10,7 @@ RSpec.describe '/articles', type: :request do
 
   let(:valid_headers) do
     user.create_new_auth_token.merge('Accept' => 'application/vnd.blog.v1')
+
   end
   let(:invalid_headers) do
     { 'Accept' => 'application/vnd.blog.v1' }
@@ -26,8 +27,22 @@ RSpec.describe '/articles', type: :request do
       article_two
 
       get api_articles_url, headers: valid_headers, as: :json
-      expect(json_response.size).to eq 1
-      expect(json_response[0][:id]).to eq article.id
+      
+        # puts "Response Status: #{response.status}"
+        # puts "Response Body: #{response.body}"
+
+      # json_response = JSON.parse(response.body)
+
+      articles = json_response[:articles]
+
+      # expect(json_response).not_to be_empty
+      # expect(json_response.size).to eq 1
+      # expect(json_response['articles'][0][:id]).to eq article.id
+      
+      expect(json_response).not_to be_nil
+      expect(json_response['articles']).not_to be_empty
+      expect(json_response['articles'].size).to eq 1
+      expect(json_response['articles'][0]['id']).to eq article.id
     end
 
     it_behaves_like 'user not logged in' do

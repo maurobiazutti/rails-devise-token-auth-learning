@@ -45,7 +45,7 @@ RSpec.describe '/articles', type: :request do
 
     it_behaves_like 'user not logged in' do
       let(:url) do
-        get api_article_url(article), headers: {}, as: :json
+        get api_article_url(article), headers:, as: :json
       end
     end
   end
@@ -101,74 +101,74 @@ RSpec.describe '/articles', type: :request do
     end
   end
 
-  # describe 'PATCH /update' do
-  #   context 'with valid parameters' do
-  #     let(:new_attributes) { attributes_for :article }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) { attributes_for :article }
 
-  #     it 'updates the requested article' do
-  #       patch api_article_url(article),
-  #             params: { article: new_attributes },
-  #             headers: valid_headers,
-  #             as: :json
-  #       article.reload
-  #       expect(article.title).to eq(new_attributes[:title])
-  #     end
+      it 'updates the requested article' do
+        patch api_article_url(article),
+              params: { article: new_attributes },
+              headers: valid_headers,
+              as: :json
+        article.reload
+        expect(article.title).to eq(new_attributes[:title])
+      end
 
-  #     it 'renders a JSON response with the article' do
-  #       patch api_article_url(article),
-  #             params: { article: new_attributes },
-  #             headers: valid_headers,
-  #             as: :json
-  #       expect(response).to have_http_status(:ok)
-  #       expect(response.content_type).to match(a_string_including('application/json'))
-  #     end
-  #   end
+      it 'renders a JSON response with the article' do
+        patch api_article_url(article),
+              params: { article: new_attributes },
+              headers: valid_headers,
+              as: :json
+        expect(response).to have_http_status(:ok)
+        expect(response.content_type).to match(a_string_including('application/json'))
+      end
+    end
 
-  #   context 'with invalid parameters' do
-  #     it 'renders a JSON response with errors for the article' do
-  #       patch api_article_url(article),
-  #             params: { article: invalid_attributes },
-  #             headers: valid_headers,
-  #             as: :json
-  #       expect(response).to have_http_status(:unprocessable_entity)
-  #       expect(response.content_type).to eq('application/json; charset=utf-8')
-  #     end
-  #   end
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the article' do
+        patch api_article_url(article),
+              params: { article: invalid_attributes },
+              headers: valid_headers,
+              as: :json
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.content_type).to eq('application/json; charset=utf-8')
+      end
+    end
 
-  #   it_behaves_like "trying to access another user's resource" do
-  #     let(:url) do
-  #       patch api_article_url(article_two), headers: valid_headers, as: :json
-  #     end
-  #   end
+    it_behaves_like "trying to access another user's resource" do
+      let(:url) do
+        patch api_article_url(article_two), headers: valid_headers, as: :json
+      end
+    end
 
-  #   it_behaves_like 'user not logged in' do
-  #     let(:url) do
-  #       patch api_article_url(article),
-  #             params: { article: valid_attributes },
-  #             headers: {},
-  #             as: :json
-  #     end
-  #   end
-  # end
+    it_behaves_like 'user not logged in' do
+      let(:url) do
+        patch api_article_url(article),
+              params: { article: valid_attributes },
+              headers: {},
+              as: :json
+      end
+    end
+  end
 
-  # describe 'DELETE /destroy' do
-  #   it 'destroys the requested article' do
-  #     article
-  #     expect do
-  #       delete api_article_url(article), headers: valid_headers, as: :json
-  #     end.to change(Article, :count).by(-1)
-  #   end
+  describe 'DELETE /destroy' do
+    it 'destroys the requested article' do
+      article
+      expect do
+        delete api_article_url(article), headers: valid_headers, as: :json
+      end.to change(Article, :count).by(-1)
+    end
 
-  #   it_behaves_like "trying to access another user's resource" do
-  #     let(:url) do
-  #       delete api_article_url(article_two), headers: valid_headers, as: :json
-  #     end
-  #   end
+    it_behaves_like "trying to access another user's resource" do
+      let(:url) do
+        delete api_article_url(article_two), headers: valid_headers, as: :json
+      end
+    end
 
-  #   it_behaves_like 'user not logged in' do
-  #     let(:url) do
-  #       delete api_article_url(article), headers: {}, as: :json
-  #     end
-  #   end
-  # end
+    it_behaves_like 'user not logged in' do
+      let(:url) do
+        delete api_article_url(article), headers: {}, as: :json
+      end
+    end
+  end
 end

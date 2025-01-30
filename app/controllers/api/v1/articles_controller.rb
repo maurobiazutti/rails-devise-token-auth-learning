@@ -4,19 +4,19 @@ class Api::V1::ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all
+    @articles = current_api_user.articles.all
 
-    render json: @articles
+    render json: { articles: @articles }, status: :ok
   end
 
   # GET /articles/1
   def show
-    render json: @article
+    render json: { article: @article }, status: :ok
   end
 
   # POST /articles
   def create
-    @article = Article.new(article_params)
+    @article = current_api_user.articles.new(article_params)
 
     if @article.save
       render json: @article, status: :created, location: api_article_url(@article)
@@ -42,7 +42,7 @@ class Api::V1::ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params.expect(:id))
+      @article = current_api_user.articles.find(params.expect[:id])
     end
 
     # Only allow a list of trusted parameters through.
