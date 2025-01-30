@@ -6,7 +6,6 @@ default: &default
   password: <%= ENV.fetch("DB_PASSWORD", "default_password") %>
   host: localhost
 
-
 development:
   <<: *default
   database: blog_api_development
@@ -15,12 +14,11 @@ test:
   <<: *default
   database: blog_api_test
 
-
 production:
   primary: &primary_production
     <<: *default
     database: blog_api_production
-    username: blog_api
+    username: <%= ENV.fetch("DB_USERNAME", "default_user") %>
     password: <%= ENV["BLOG_API_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
