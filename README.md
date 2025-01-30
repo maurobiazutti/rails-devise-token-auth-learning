@@ -43,6 +43,10 @@ A aplicação estará disponível em `http://localhost:3000`.
 
 ## Testes
 
+Para executar os testes, use o seguinte comando:
+``` bash
+bundle exec rspec
+```
 ![Cobertura de Testes](docs/img_teste_coverage.png)
 
 
