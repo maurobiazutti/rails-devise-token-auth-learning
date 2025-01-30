@@ -25,9 +25,7 @@ RSpec.describe '/articles', type: :request do
 
       get api_articles_url, headers: valid_headers, as: :json
 
-      puts response.body
-
-       expect(json_response).to be_a(Hash) # Garante que é um Hash
+      expect(json_response).to be_a(Hash) # Garante que é um Hash
       expect(json_response[:articles]).to be_an(Array) # Garante que existe um array de artigos
       expect(json_response[:articles].size).to eq 1
     end
@@ -41,67 +39,67 @@ RSpec.describe '/articles', type: :request do
 
     it_behaves_like "trying to access another user's resource" do
       let(:url) do
-        get api_article_url(article_two), headers: '', as: :json
+        get api_article_url(article_two), headers: valid_headers, as: :json
       end
     end
 
     it_behaves_like 'user not logged in' do
       let(:url) do
-        get api_article_url(article), headers: valid_headers, as: :json
+        get api_article_url(article), headers: {}, as: :json
       end
     end
   end
 
-  # describe 'POST /create' do
-  #   context 'with valid parameters' do
-  #     it 'creates a new Article' do
-  #       expect do
-  #         post api_articles_url,
-  #              params: { article: valid_attributes },
-  #              headers: valid_headers,
-  #              as: :json
-  #       end.to change(Article, :count).by(1)
-  #     end
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Article' do
+        expect do
+          post api_articles_url,
+               params: { article: valid_attributes },
+               headers: valid_headers,
+               as: :json
+        end.to change(Article, :count).by(1)
+      end
 
-  #     it 'renders a JSON response with the new article' do
-  #       post api_articles_url,
-  #            params: { article: valid_attributes },
-  #            headers: valid_headers,
-  #            as: :json
-  #       expect(response).to have_http_status(:created)
-  #       expect(response.content_type).to match(a_string_including('application/json'))
-  #     end
-  #   end
+      it 'renders a JSON response with the new article' do
+        post api_articles_url,
+             params: { article: valid_attributes },
+             headers: valid_headers,
+             as: :json
+        expect(response).to have_http_status(:created)
+        expect(response.content_type).to match(a_string_including('application/json'))
+      end
+    end
 
-  #   context 'with invalid parameters' do
-  #     it 'does not create a new Article' do
-  #       expect do
-  #         post api_articles_url,
-  #              params: { article: invalid_attributes },
-  #              headers: valid_headers,
-  #              as: :json
-  #       end.to change(Article, :count).by(0)
-  #     end
+    context 'with invalid parameters' do
+      it 'does not create a new Article' do
+        expect do
+          post api_articles_url,
+               params: { article: invalid_attributes },
+               headers: valid_headers,
+               as: :json
+        end.to change(Article, :count).by(0)
+      end
 
-  #     it 'renders a JSON response with errors for the new article' do
-  #       post api_articles_url,
-  #            params: { article: invalid_attributes },
-  #            headers: valid_headers,
-  #            as: :json
-  #       expect(response).to have_http_status(:unprocessable_entity)
-  #       expect(response.content_type).to eq('application/json; charset=utf-8')
-  #     end
-  #   end
+      it 'renders a JSON response with errors for the new article' do
+        post api_articles_url,
+             params: { article: invalid_attributes },
+             headers: valid_headers,
+             as: :json
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.content_type).to eq('application/json; charset=utf-8')
+      end
+    end
 
-  #   it_behaves_like 'user not logged in' do
-  #     let(:url) do
-  #       post api_articles_url,
-  #            params: { article: valid_attributes },
-  #            headers: {},
-  #            as: :json
-  #     end
-  #   end
-  # end
+    it_behaves_like 'user not logged in' do
+      let(:url) do
+        post api_articles_url,
+             params: { article: valid_attributes },
+             headers: {},
+             as: :json
+      end
+    end
+  end
 
   # describe 'PATCH /update' do
   #   context 'with valid parameters' do
