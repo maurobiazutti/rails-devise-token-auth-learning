@@ -2,6 +2,24 @@
 
 API com Rails 8 e Devise Token Auth, explorando implementação de autenticação para aplicação Web.
 
+# Funcionalidades
+
+## Autenticação
+
+- [x] Criação de conta
+- [x] Recuperação de senha
+- [x] Confirmação de conta
+- [x] Login / Logout
+- [x] Alteração de senha e dados do usuário
+- [x] Exclusão de conta
+  
+## Artigos
+
+- [x] Criação de artigos
+- [x] Listagem de artigos 
+- [x] Atualização de artigos
+- [x] Exclusão de artigos
+
 ## Tecnologias Utilizadas
 
 | Tecnologias | Versão | 
